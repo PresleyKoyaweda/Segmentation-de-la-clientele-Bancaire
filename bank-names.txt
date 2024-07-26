@@ -1,0 +1,59 @@
+import streamlit as st
+import pandas as pd
+import requests
+
+# Titre de l'application
+st.title("Modèle de Scoring")
+
+# Créer un formulaire pour les entrées utilisateur
+st.sidebar.header('Input Parameters')
+def user_input_features():
+    account_balance = st.sidebar.number_input('Account Balance', min_value=0, max_value=3, value=1)
+    payment_status = st.sidebar.number_input('Payment Status of Previous Credit', min_value=0, max_value=3, value=1)
+    duration_category = st.sidebar.number_input('Duration Category', min_value=0, max_value=3, value=1)
+    value_savings_stocks = st.sidebar.number_input('Value Savings Stocks', min_value=0, max_value=3, value=1)
+    purpose = st.sidebar.number_input('Purpose', min_value=0, max_value=3, value=1)
+    mount_category = st.sidebar.number_input('Mount Category', min_value=0, max_value=10000, value=1000)
+    most_valuable_available_asset = st.sidebar.number_input('Most Valuable Available Asset', min_value=0, max_value=3, value=1)
+    type_of_apartment = st.sidebar.number_input('Type of Apartment', min_value=0, max_value=3, value=1)
+    length_of_current_employment = st.sidebar.number_input('Length of Current Employment', min_value=0, max_value=10, value=1)
+    age_category = st.sidebar.number_input('Age Category', min_value=0, max_value=100, value=25)
+    concurrent_credits = st.sidebar.number_input('Concurrent Credits', min_value=0, max_value=3, value=0)
+    sex_marital_status = st.sidebar.number_input('Sex Marital Status', min_value=0, max_value=3, value=1)
+
+    data = {
+        'Account_Balance': account_balance,
+        'Payment_Status_of_Previous_Credit': payment_status,
+        'Duration_Category': duration_category,
+        'Value_Savings_Stocks': value_savings_stocks,
+        'Purpose': purpose,
+        'Mount_Category': mount_category,
+        'Most_valuable_available_asset': most_valuable_available_asset,
+        'Type_of_apartment': type_of_apartment,
+        'Length_of_current_employment': length_of_current_employment,
+        'Age_category': age_category,
+        'Concurrent_Credits': concurrent_credits,
+        'Sex_Marital_Status': sex_marital_status
+    }
+    features = pd.DataFrame(data, index=[0])
+    return features
+
+input_df = user_input_features()
+
+# Afficher les entrées utilisateur
+st.subheader('User Input parameters')
+st.write(input_df)
+
+# Faire une prédiction en appelant l'API Flask
+if st.button('Predict'):
+    response = requests.post("http://127.0.0.1:5000/predict", json=input_df.to_dict(orient='records')[0])
+    prediction = response.json()
+    
+    # Convertir la prédiction en phrase
+    if prediction['prediction'] == 0:
+        result = "Non Solvable"
+    else:
+        result = "Solvable"
+    
+    st.subheader('Prediction')
+    st.write(result)

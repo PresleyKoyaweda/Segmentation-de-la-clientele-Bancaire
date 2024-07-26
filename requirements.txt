@@ -2,8 +2,6 @@ flask
 joblib
 pandas
 requests
-gunicorn
 streamlit
 matplotlib
 scikit-learn
-
