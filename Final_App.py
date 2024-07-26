@@ -13,8 +13,8 @@ from sklearn.cluster import KMeans
 
 # Définition de la classe de transformation personnalisée
 class CustomTransform(BaseEstimator, TransformerMixin):
-    def __init__(self, constante):
-        self.constante == 100000000000000000000000000
+    def __init__(self, constante=1000000000000):
+        self.constante == constante
 
     def fit(self, X, y=None):
         return self
