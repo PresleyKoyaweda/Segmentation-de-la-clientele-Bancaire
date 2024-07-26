@@ -119,7 +119,7 @@ education = st.selectbox('Niveau Éducation (sélectionnez)', ['primary', 'secon
 credit_defaillant = st.selectbox('Avoir Crédit Défaillant (sélectionnez)', ['yes', 'no'])
 pret_logement = st.selectbox('Avoir Prêt Logement (sélectionnez)', ['yes', 'no'])
 pret_personnel = st.selectbox('Avoir Prêt Personnel (sélectionnez)', ['yes', 'no'])
-solde_compte = st.number_input('Solde Compte (valeur en CAD)',min_value=-20000000, max_value=10000000000, value=0)
+solde_compte = st.number_input('Solde Compte (valeur en CAD)',min_value=-5000, max_value=10000000000, value=0)
 type_contact = st.selectbox('Type Contact (sélectionnez)', ['cellular', 'telephone'])
 jour_contact = st.number_input('Jour Contact (1-31)', min_value=1, max_value=31)
 mois_contact = st.selectbox('Mois Contact (sélectionnez)', ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'],)
