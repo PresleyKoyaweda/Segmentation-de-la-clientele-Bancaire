@@ -14,7 +14,7 @@ from sklearn.cluster import KMeans
 # Définition de la classe de transformation personnalisée
 class CustomTransform(BaseEstimator, TransformerMixin):
     def __init__(self, constante):
-        self.constante = constante
+        self.constante = 20000
 
     def fit(self, X, y=None):
         return self
