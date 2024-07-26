@@ -14,7 +14,7 @@ from sklearn.cluster import KMeans
 # Définition de la classe de transformation personnalisée
 class CustomTransform(BaseEstimator, TransformerMixin):
     def __init__(self, constante):
-        self.constante = 20000
+        self.constante == 100000000000000000000000000
 
     def fit(self, X, y=None):
         return self
@@ -112,14 +112,14 @@ Tester ce modèle en remplissant le formulaire ci-dessous pour obtenir une recom
 """)
 
 # Entrées des caractéristiques du client
-age = st.number_input('Âge (18-100 ans)', min_value=18, max_value=100,)
+age = st.number_input('Âge (18-100 ans)', min_value=18, max_value=100)
 etat_civil = st.selectbox('État Civil (sélectionnez)', ['married', 'single', 'divorced'])
 profession = st.selectbox('Profession (sélectionnez)', ['admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed'])
 education = st.selectbox('Niveau Éducation (sélectionnez)', ['primary', 'secondary', 'tertiary'])
 credit_defaillant = st.selectbox('Avoir Crédit Défaillant (sélectionnez)', ['yes', 'no'])
 pret_logement = st.selectbox('Avoir Prêt Logement (sélectionnez)', ['yes', 'no'])
 pret_personnel = st.selectbox('Avoir Prêt Personnel (sélectionnez)', ['yes', 'no'])
-solde_compte = st.number_input('Solde Compte (valeur en euros)', )
+solde_compte = st.number_input('Solde Compte (valeur en CAD)',min_value=-20000000, max_value=10000000000, value=0)
 type_contact = st.selectbox('Type Contact (sélectionnez)', ['cellular', 'telephone'])
 jour_contact = st.number_input('Jour Contact (1-31)', min_value=1, max_value=31)
 mois_contact = st.selectbox('Mois Contact (sélectionnez)', ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'],)
