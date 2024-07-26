@@ -105,7 +105,7 @@ Tester ce modèle en remplissant le formulaire ci-dessous pour obtenir une recom
 
 # Entrée des caractéristiques du client
 age = st.number_input('Âge', min_value=18, max_value=100, value=30)
-etat_civil = st.selectbox('État Civil', ['married', 'single', 'divorced'])
+etat_civil = st.selectbox('État Civil', ['','married', 'single', 'divorced'])
 profession = st.selectbox('Profession', ['admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed'])
 education = st.selectbox('Niveau Éducation', ['primary', 'secondary', 'tertiary'])
 credit_defaillant = st.selectbox('Avoir Crédit Défaillant', ['yes', 'no'])
